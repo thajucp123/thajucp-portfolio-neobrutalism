@@ -25,13 +25,28 @@ html, body {
 }
 
 body {
-  background: var(--white);
-  color: var(--black);
+ background: linear-gradient(135deg, #FFFFFF 0%, #7acbeb 25%, #E5F2FF 50%, #f2c0d9 75%, #FFFFFF 100%);
+  background-size: 400% 400%;
+  animation: gradientAnimation 5s ease-in-out infinite; 
+  color: #333;
   line-height: 1.6;
   padding: 1.25rem;
   min-height: 100vh;
   cursor: var(--cursor-default);
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 a, button {
   cursor: var(--cursor-pointer) !important;
@@ -142,10 +157,126 @@ section h2 {
   background: var(--yellow);
 }
 
+.profile-image {
+  width: 6.25rem;
+  height: 6.25rem;
+  margin-bottom: 0.25rem;
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0.5rem 0.5rem 0px var(--black);
+  cursor: var(--cursor-pointer);
+}
+
 .about p {
   font-size: 1rem;
   font-weight: bold;
 }
+
+.download-resume-btn {
+  display: block;
+  margin-top: 1.25rem;
+  padding: 0.625rem 1.25rem;
+  border: 0.125rem solid var(--black);
+  background: var(--white);
+  color: var(--blue);
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all 0.3s;
+  width: fit-content;
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
+}
+.download-resume-btn:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translate(-0.125rem, -0.125rem);
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
+}
+.about-buttons {
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+.read-book-btn {
+  display: block;
+  margin-top: 1.25rem;
+  padding: 0.625rem 1.25rem;
+  border: 0.125rem solid var(--black);
+  background: var(--red);
+  color: var(--white);
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all 0.3s;
+  width: fit-content;
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
+}
+.read-book-btn:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translate(-0.125rem, -0.125rem);
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
+}
+
+/*previous version section with the text and image sides*/
+.previous-version {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.previous-version-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.previous-version-text {
+  flex: 2; /* This div will take up 2/3 of the space */
+  padding-right: 2rem;
+}
+
+.previous-version-image {
+  flex: 1; /* This div will take up 1/3 of the space */
+  object-fit: contain;
+  box-shadow: 0.5rem 0.5rem 0px var(--pink);
+}
+
+.previous-version-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.previous-version-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0.5rem 0.5rem 0px var(--black);
+  cursor: var(--cursor-pointer);
+}
+
+.previous-version h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.previous-version p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.previous-version span {
+  color: var(--red);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 
 /* Skills */
 .skills {
