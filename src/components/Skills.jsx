@@ -9,11 +9,13 @@ function Skills() {
 
   return (
     <section id="skills" className="skills">
-      <h2>Skills</h2>
+      <h2>Skills 🔨</h2>
       <ul>
-        {skills.map((skill, index) => (
-          <li key={index}>{skill}</li>
-        ))}
+      {skills.map((skill, index) => (
+        <li key={index} className={index % 2 === 0 ? 'left' : 'right'}>
+          {skill}
+        </li>
+      ))}
       </ul>
     </section>
   )

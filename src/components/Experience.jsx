@@ -3,7 +3,7 @@ import React from 'react'
 function Experience() {
   return (
     <section id="experience" className="experience">
-      <h2>Experience</h2>
+      <h2>Experience 💼</h2>
       <div className="job">
         <h3>Full Stack Developer – AES India</h3>
         <p><strong>Aug 2021 – Present</strong></p>
