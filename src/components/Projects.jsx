@@ -34,6 +34,15 @@ function Projects() {
 
   return (
     <section id="projects" className="projects">
+    <svg
+    className="pin-dot"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="6" cy="6" r="6" fill="#000" />
+  </svg>
       <h2>Projects 🚀</h2>
       {projects.map((project, index) => (
   <div key={index} className={`project ${index === 0 ? 'first-project' : ''}`}>

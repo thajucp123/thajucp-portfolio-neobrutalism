@@ -4,6 +4,15 @@ import bookimage from '../assets/shadows wake.jpg'
 function Book() {
   return (
     <section id="book" className="book">
+    <svg
+    className="pin-dot"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="6" cy="6" r="6" fill="#000" />
+  </svg>
       <h2>Book 📖</h2>
       <div className="book-card">
         <img src={bookimage} alt="Book Cover" />

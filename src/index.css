@@ -53,6 +53,43 @@
   --sidebar-ring: oklch(0.708 0 0);
   }
 
+  /*custom scrollbar styles*/
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+  
+  /* transparent Track */
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-image: repeating-linear-gradient(
+    45deg,
+    var(--red),
+    var(--blue) 5px,
+    var(--yellow) 5px,
+    #fff 10px
+  );
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-image: repeating-linear-gradient(
+    45deg,
+    var(--yellow),
+    var(--red) 5px,
+    var(--white) 5px,
+    var(--blue) 10px
+  );
+  }
+
+   ::-webkit-scrollbar-track:hover {
+    background: var(--blue);
+  }
+
+
 * {
   margin: 0;
   padding: 0;
@@ -119,6 +156,14 @@ input, textarea {
   cursor: var(--cursor-text) !important;
 }
 
+/* Dot styling */
+.pin-dot {
+  position: absolute;
+  top: 0.4rem;     /* Slightly above the card */
+  right: 0.8rem;   /* Slightly outside the edge */
+  z-index: 10;
+}
+
 /* Main container */
 .home-container {
   max-width: 68.75rem;
@@ -183,12 +228,33 @@ input, textarea {
   gap: 1.25rem;
 }
 
+
+
 .nav-links a {
   text-decoration: none;
   font-weight: bold;
   color: var(--black);
   transition: 0.3s;
+  position: relative;
 }
+
+/* Brutalist underline */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; /* Push it down */
+  left: 30%;     /* Offset to the right */
+  width: 40%;    /* Half-ish the text width */
+  height: 6px;
+  background-color: currentColor; /* Will be overridden by classes */
+}
+
+a.color-1::after { background-color: var(--blue); } /* Red */
+a.color-2::after { background-color: var(--green); } /* Green */
+a.color-3::after { background-color: var(--pink); } /* Blue */
+a.color-4::after { background-color: var(--red); } /* Magenta */
+a.color-5::after { background-color: var(--blue); } /* Yellow */
+a.color-6::after { background-color: var(--color-cyan-300); } /* Cyan */
 
 .nav-links a:hover {
   color: var(--blue);
@@ -303,17 +369,17 @@ section h2 {
   }
 }
 .profile-image {
-  width: 6.25rem;
-  height: 6.25rem;
-  margin-bottom: 0.25rem;
-  box-shadow: 0.25rem 0.25rem 0px var(--red);
+  width: 7.25rem;
+  height: 7.25rem;
+  margin-bottom: 0.625rem;
+  box-shadow: 0.35rem 0.35rem 0px var(--green);
   transform: rotate(-7deg);
   border-radius: 50%;
 }
 
 .profile-image:hover {
   transform: scale(1.05);
-  box-shadow: 0.5rem 0.5rem 0px var(--black);
+  box-shadow: 0.5rem 0.5rem 0px var(--red);
   cursor: var(--cursor-pointer);
 }
 
@@ -375,6 +441,7 @@ section h2 {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .previous-version-container {
@@ -450,6 +517,7 @@ section h2 {
 .skills {
   background: var(--green);
   color: var(--white);
+  position: relative;
 }
 
 .skills ul {
@@ -472,32 +540,59 @@ section h2 {
 
 /* Alternate styles for left and right skills */
 .skills li.left {
-  transform: rotate(-2deg);
+  animation: rotateLeft 2s infinite;
 }
+
 .skills li.right {
-  transform: rotate(2deg);
+  animation: rotateRight 2s infinite;
 }
+
+@keyframes rotateLeft {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes rotateRight {
+  0% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
 .skills li.left:hover {
   background: var(--pink);
   color: var(--white);
-  transform: rotate(2deg);
+  animation: none;
+  transform: rotate(2deg) translate(-0.125rem, -0.125rem);
+  box-shadow: 0.25rem 0.25rem 0px var(--black);
 }
+
 .skills li.right:hover {
   background: var(--blue);
   color: var(--white);
-  transform: rotate(-2deg);
-}
-
-.skills li:hover {
-
+  animation: none;
+  transform: rotate(-2deg) translate(-0.125rem, -0.125rem);
   box-shadow: 0.25rem 0.25rem 0px var(--black);
-  transform: translate(-0.125rem, -0.125rem);
 }
+
 
 /* Projects */
 .projects {
   background: var(--pink);
   color: var(--white);
+  position: relative;
 }
 
 .projects .project {
@@ -654,6 +749,7 @@ section h2 {
 .experience {
   background: var(--red);
   color: var(--white);
+  position: relative;
 }
 
 .experience .job {
@@ -690,6 +786,7 @@ section h2 {
 .book {
   background: var(--blue);
   color: var(--white);
+  position: relative;
 }
 
 .book .book-card {
@@ -764,8 +861,9 @@ section h2 {
 
 /* Contact */
 .contact {
-  background: var(--blue);
-  color: var(--white);
+  background: var(--color-cyan-300);
+  color: var(--black);
+  position: relative;
 }
 
 /*Placeholder text color*/
@@ -812,12 +910,12 @@ section h2 {
 .social-links a {
   margin: 0 0.625rem;
   display: inline-block;
-  color: var(--yellow);
+  color: var(--red);
   transition: 0.3s;
 }
 
 .social-links a:hover {
-  color: var(--red);
+  color: var(--green);
 }
 
 .social-links svg {

@@ -9,6 +9,15 @@ function Contact() {
 
   return (
     <section id="contact" className="contact">
+    <svg
+    className="pin-dot"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="6" cy="6" r="6" fill="#000" />
+  </svg>
       <h2>Contact 📬</h2>
       <form onSubmit={handleSubmit} className='contact-form'>
         <input type="text" placeholder="Your Name" required />
@@ -16,7 +25,7 @@ function Contact() {
         <textarea rows="5" placeholder="Your Message"></textarea>
         <button type="submit">Send Message</button>
       </form>
-      <p style={{marginTop: '15px'}}>Or reach me directly at <a href="mailto:mail@thajucp.in" style={{color: 'var(--yellow)', fontWeight: 'bold'}}>mail@thajucp.in</a></p>
+      <p style={{marginTop: '15px'}}>Or reach me directly at <a href="mailto:mail@thajucp.in" style={{color: 'var(--red)', fontWeight: 'bold'}}>mail@thajucp.in</a></p>
       
       <div className="social-links">
         <a href="https://www.linkedin.com/in/thaju-fakrudheen/" target="_blank" rel="noopener noreferrer">

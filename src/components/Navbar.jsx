@@ -46,12 +46,12 @@ function Navbar() {
         <span></span>
       </button>
       <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-        <a href="#about" onClick={closeMenu}>About</a>
-        <a href="#skills" onClick={closeMenu}>Skills</a>
-        <a href="#projects" onClick={closeMenu}>Projects</a>
-        <a href="#experience" onClick={closeMenu}>Experience</a>
-        <a href="#book" onClick={closeMenu}>Book</a>
-        <a href="#contact" onClick={closeMenu}>Contact</a>
+        <a href="#about" onClick={closeMenu} className='color-1'>About</a>
+        <a href="#skills" onClick={closeMenu} className='color-2'>Skills</a>
+        <a href="#projects" onClick={closeMenu} className='color-3'>Projects</a>
+        <a href="#experience" onClick={closeMenu} className='color-4'>Experience</a>
+        <a href="#book" onClick={closeMenu} className='color-5'>Book</a>
+        <a href="#contact" onClick={closeMenu} className='color-6'>Contact</a>
         
       </div>
       {/* place toggle dark/light mode button with moon and sun icons here */}
