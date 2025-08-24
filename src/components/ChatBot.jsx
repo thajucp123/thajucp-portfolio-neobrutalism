@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const ChatBot = () => {
-    const [isOpen, setIsOpen] = useState(false);
+const ChatBot = ({ isOpen, toggleChat }) => {
     const [messages, setMessages] = useState([
         { text: "Hello! I'm KnowThaj, a chatbot for Thaju CP's portfolio. How can I help you today?", sender: 'bot' }
     ]);
@@ -9,9 +8,7 @@ const ChatBot = () => {
     const [isTyping, setIsTyping] = useState(false);
     const chatContainerRef = useRef(null);
 
-    const toggleChat = () => {
-        setIsOpen(!isOpen);
-    };
+    
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);

@@ -9,12 +9,12 @@ import Contact from './Contact'
 import Footer from './Footer'
 import PreviousSite from './PreviousSite'
 
-function Home() {
+function Home({ toggleChat }) {
   return (
     <>
     <Navbar />
     <div className="home-container ">
-      <About />
+      <About toggleChat={toggleChat} />
       <PreviousSite />
       <Skills />
       <Projects />
