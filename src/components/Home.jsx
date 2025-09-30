@@ -14,6 +14,7 @@ function Home({ toggleChat }) {
     <>
     <Navbar />
     <div className="home-container ">
+
       <About toggleChat={toggleChat} />
       <PreviousSite />
       <Skills />

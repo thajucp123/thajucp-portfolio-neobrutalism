@@ -43,7 +43,7 @@ function Navbar() {
     <div className={`navbar ${hidden ? "hidden" : ""}`}>
     <div className='navbar-name'>
       <h1>Thajudeen CP</h1>
-      <p>Full Stack Developer + AI/ML Engineer{theme}</p>
+      <p>Full Stack Developer + AI/ML Engineer</p>
     </div>
       <button 
         className={`hamburger ${isMenuOpen ? 'active' : ''}`}

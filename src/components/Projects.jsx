@@ -44,6 +44,7 @@ function Projects() {
     <circle cx="6" cy="6" r="6" fill="#000" />
   </svg>
       <h2>Projects 🚀</h2>
+
       {projects.map((project, index) => (
   <div key={index} className={`project ${index === 0 ? 'first-project' : ''}`}>
     <div className="project-content">

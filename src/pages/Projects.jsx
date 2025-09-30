@@ -86,6 +86,7 @@ function Projects() {
       </div>
 
       <div className="projects-grid">
+
         {allProjects.map((project, index) => (
           <div key={index} className={`project-card ${project.featured ? 'featured' : ''}`}>
             <div className="project-image">
