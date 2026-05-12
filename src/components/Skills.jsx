@@ -2,10 +2,36 @@ import React from 'react'
 
 function Skills() {
   const skills = [
-    'React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'JavaScript',
-    'TypeScript', 'GraphQL', 'Tailwind', 'Flutter', 'Kotlin', 'Git',
-    'AWS', 'Figma', 'Jira', 'Docker', 'Selenium', 'Jest'
-  ]
+'Python',
+'AI/ML',
+'Computer Vision',
+'OpenCV',
+'YOLOv8',
+'TensorFlow',
+'PyTorch',
+'Scikit-Learn',
+'SQL',
+'NumPy',
+'Pandas',
+'Jupyter',
+'React.js',
+'Next.js',
+'Node.js',
+'Express',
+'MongoDB',
+'JavaScript',
+'TypeScript',
+'REST APIs',
+'Docker',
+'AWS',
+'Linux',
+'Git',
+'GitHub Actions',
+'Flutter',
+'Kotlin',
+'Figma',
+'Photoshop'
+]
 
   return (
     <section id="skills" className="skills">

@@ -8,6 +8,8 @@ const ChatBot = ({ isOpen, toggleChat }) => {
     const [isTyping, setIsTyping] = useState(false);
     const chatContainerRef = useRef(null);
 
+    const [serverStatus, setServerStatus] = useState('Checking...');
+const [modelName, setModelName] = useState('');
     
 
     const handleInputChange = (e) => {
@@ -46,6 +48,41 @@ const ChatBot = ({ isOpen, toggleChat }) => {
         }
     }, [messages]);
 
+
+// for checking if backend online and getting model name
+    useEffect(() => {
+
+const checkServerStatus = async () => {
+
+    try {
+
+        const response = await fetch(
+            'https://thajucp-portfolio-chatbot.vercel.app/status'
+        );
+
+        if (!response.ok) {
+            throw new Error('Server unavailable');
+        }
+
+        const data = await response.json();
+
+        setServerStatus(data.status || 'Online');
+        setModelName(data.model || '');
+
+    } catch (error) {
+
+        console.error('Status check failed:', error);
+
+        setServerStatus('Offline');
+        setModelName('');
+    }
+};
+
+checkServerStatus();
+
+}, []);
+
+
     return (
         <div className={`chatbot-fab ${isOpen ? 'open' : ''}`}>
             {!isOpen && (
@@ -66,7 +103,30 @@ const ChatBot = ({ isOpen, toggleChat }) => {
                             </div>
                             <div>
                                 <h1 className="text-xl font-bold">KnowThaj Bot</h1>
-                                <p className="text-sm">STATUS: Online</p>
+                                <p className="text-sm">
+  STATUS:
+  <span
+    style={{
+      color:
+        serverStatus.toLowerCase() === 'online'
+          ? '#16a34a'
+          : serverStatus === 'Checking...'
+          ? '#eab308'
+          : '#dc2626',
+      fontWeight: 'bold',
+      marginLeft: '6px'
+    }}
+  >
+    {serverStatus}
+  </span>
+
+{modelName && (
+<span style={{ marginLeft: '8px', opacity: 0.8 }}>
+({modelName}) </span>
+)}
+
+</p>
+
                             </div>
                         </div>
                         <button onClick={toggleChat} className="close-button">

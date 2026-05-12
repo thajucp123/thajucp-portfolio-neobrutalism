@@ -2,35 +2,66 @@ import React from 'react'
 
 function Projects() {
   const projects = [
-    {
-      title: 'Ente Kottakkal',
-      description: 'A personal project for my village "Kottakkal". Provides a database of shops, workers, organisations, bus timings, blood bank info, and more.',
-      github: '#',
-      demo: '#',
-      tech: ["Next.js", "Kotlin", "Flutter", "Firebase"]
-    },
-    {
-      title: 'Seashore Mediclinic',
-      description: 'A responsive React website showcasing medical services and facilities for Seashore Mediclinic. Features appointment booking and easy access to information.',
-      github: '#',
-      demo: '#',
-      tech: ["MongoDB", "Express", "React", "Node.js"]
-    },
-    {
-      title: 'Adhuni Gold Savings App',
-      description: 'Prototype app for automating monthly gold saving schemes, with deposit tracking, gold rate integration, and admin dashboards.',
-      github: '#',
-      demo: '#',
-      tech: ["React", "CSS", "JavaScript"]
-    },
-    {
-      title: 'Personal Blog',
-      description: 'A minimal blogging platform with Markdown support and a clean UI. Built with Next.js and MongoDB.',
-      github: '#',
-      demo: '#',
-      tech: ["React", "CSS", "JavaScript"]
-    }
-  ]
+{
+title: 'Weld Defect Detection System',
+description:
+'An industry-applied computer vision inspection assistant used at AES India, designed to identify weld defects in standard and X-ray images using AI/ML workflows. Built for improving industrial inspection efficiency through automated defect detection and image analysis.',
+github: '#',
+demo: '#',
+tech: [
+"Python",
+"YOLOv8",
+"OpenCV",
+"PyTorch",
+"React",
+"AWS"
+]
+},
+
+{
+title: 'Ente Kottakkal',
+description:
+'A community-focused digital platform developed for my village, providing locally relevant information including blood bank records, public contacts, worker directories, bus timings, shop listings, and organization details.',
+github: '#',
+demo: '#',
+tech: [
+"Next.js",
+"Flutter",
+"Firebase",
+"Kotlin",
+"AWS"
+]
+},
+
+{
+title: 'AI Helmet Detection System',
+description:
+'An AI-powered safety monitoring application capable of detecting motorcycle riders with and without helmets using computer vision and object detection models.',
+github: 'https://github.com/thajucp123/helmet-detection',
+demo: 'https://helmet-detection-xi.vercel.app/',
+tech: [
+"Python",
+"YOLOv8",
+"React",
+"OpenCV"
+]
+},
+
+{
+title: 'Adhuni Gold Rate Generator',
+description:
+'An automation tool built for Adhuni Gold Jewellers to dynamically generate daily gold-rate posters and WhatsApp status images using customizable templates and automated rendering workflows.',
+github: 'https://github.com/thajucp123/adhunigold-rate-generator',
+demo: 'https://adhunigold-rate.vercel.app/',  
+tech: [
+"React",
+"JavaScript",
+"html2canvas",
+"CSS"
+]
+}
+]
+
 
   return (
     <section id="projects" className="projects">
@@ -59,8 +90,8 @@ function Projects() {
       </div>
     </div>
     <div className="project-buttons">
-      <a href={project.github}>GitHub Repo</a>
-      <a href={project.demo}>Live Demo</a>
+      <a href={project.github} target='_blank'>GitHub Repo</a>
+      <a href={project.demo} target='_blank'>Live Demo</a>
     </div>
   </div>
 ))}
