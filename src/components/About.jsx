@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/thaju.jpg'
-import cv from '../assets/cv/THAJUDEEN CP - Full Stack Developer - CV 2025.pdf'
+import cv from '../assets/cv/THAJUDEEN_CP_AI_ML_Engineer_CV.pdf'
 
 function About({ toggleChat }) {
   return (
