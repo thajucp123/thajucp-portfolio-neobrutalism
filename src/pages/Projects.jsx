@@ -22,6 +22,17 @@ featured: true
 },
 
 {
+title: 'Ente Kottakkal',
+description:
+'A community-focused digital platform developed for my village, providing blood bank records, public contacts, worker listings, bus timings, organization details, and local resource management.',
+github: 'https://github.com/thajucp123/ente-kottakkal-web',
+demo: 'https://ente-kottakkal-web.vercel.app/',
+tech: ['Next.js', 'Flutter', 'Firebase', 'Kotlin', 'AWS'],
+image: placeholder,
+featured: true
+},
+
+{
 title: 'AI Helmet Detection System',
 description:
 'An AI-powered safety monitoring application capable of detecting motorcycle riders with and without helmets using computer vision and real-time object detection techniques.',
@@ -29,17 +40,6 @@ github: 'https://github.com/thajucp123/helmet-detection',
 demo: 'https://helmet-detection-xi.vercel.app/',
 tech: ['Python', 'YOLOv8', 'OpenCV', 'React'],
 image: helmet,
-featured: true
-},
-
-{
-title: 'Ente Kottakkal',
-description:
-'A community-focused digital platform developed for my village, providing blood bank records, public contacts, worker listings, bus timings, organization details, and local resource management.',
-github: '#',
-demo: '#',
-tech: ['Next.js', 'Flutter', 'Firebase', 'Kotlin', 'AWS'],
-image: placeholder,
 featured: true
 },
 

@@ -22,8 +22,8 @@ tech: [
 title: 'Ente Kottakkal',
 description:
 'A community-focused digital platform developed for my village, providing locally relevant information including blood bank records, public contacts, worker directories, bus timings, shop listings, and organization details.',
-github: '#',
-demo: '#',
+github: 'https://github.com/thajucp123/ente-kottakkal-web',
+demo: 'https://ente-kottakkal-web.vercel.app/',
 tech: [
 "Next.js",
 "Flutter",
