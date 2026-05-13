@@ -4,6 +4,7 @@ import makalude from '../assets/book_pics/Makalude.jpg';
 import eir from '../assets/book_pics/Eir.jpg';
 import timeless from '../assets/book_pics/timeless.jpg';
 import ancient from '../assets/book_pics/ancient.jpg';
+import vanaganam from '../assets/book_pics/vanaganam.jpg';
 import bookimage from '../assets/book_pics/bookimage.jpg';
 
 export const books = [
@@ -95,7 +96,7 @@ export const books = [
       { platform: "Amazon Kindle", url: "#" },
       { platform: "Paperback", url: "#" }
     ],
-    image: bookimage
+    image: vanaganam
   },
   {
     id: "my-daughters-name",
