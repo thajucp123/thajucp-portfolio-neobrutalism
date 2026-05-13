@@ -6,6 +6,7 @@ import goldrate from '../assets/projects_pics/adhunigoldrate.png'
 import aes_stamp from '../assets/projects_pics/aesstamp.png'
 import kudoszone from '../assets/projects_pics/kudoszone.png'
 import addtocart from '../assets/projects_pics/addtocart.png'
+import ekapp from '../assets/projects_pics/ek_app.png'
 import placeholder from '../assets/projects_pics/placeholder.png'
 
 function Projects() {
@@ -28,7 +29,7 @@ description:
 github: 'https://github.com/thajucp123/ente-kottakkal-web',
 demo: 'https://ente-kottakkal-landing.vercel.app/',
 tech: ['Next.js', 'Flutter', 'Firebase', 'Kotlin', 'AWS'],
-image: placeholder,
+image: ekapp,
 featured: true
 },
 
