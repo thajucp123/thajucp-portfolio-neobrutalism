@@ -23,7 +23,7 @@ title: 'Ente Kottakkal',
 description:
 'A community-focused digital platform developed for my village, providing locally relevant information including blood bank records, public contacts, worker directories, bus timings, shop listings, and organization details.',
 github: 'https://github.com/thajucp123/ente-kottakkal-web',
-demo: 'https://ente-kottakkal-web.vercel.app/',
+demo: 'https://ente-kottakkal-landing.vercel.app/',
 tech: [
 "Next.js",
 "Flutter",
@@ -98,7 +98,9 @@ tech: [
 
       <div className="all-projects-button">
         <a href="/projects" className="all-projects-btn">View All Projects</a>
+
       </div>
+      
     </section>
   )
 }

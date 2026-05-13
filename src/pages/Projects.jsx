@@ -26,7 +26,7 @@ title: 'Ente Kottakkal',
 description:
 'A community-focused digital platform developed for my village, providing blood bank records, public contacts, worker listings, bus timings, organization details, and local resource management.',
 github: 'https://github.com/thajucp123/ente-kottakkal-web',
-demo: 'https://ente-kottakkal-web.vercel.app/',
+demo: 'https://ente-kottakkal-landing.vercel.app/',
 tech: ['Next.js', 'Flutter', 'Firebase', 'Kotlin', 'AWS'],
 image: placeholder,
 featured: true
