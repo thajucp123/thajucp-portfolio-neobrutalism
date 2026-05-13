@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home toggleChat={toggleChat} />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/book" element={<Book />} />
+        <Route path="/book/:id" element={<Book />} />
       </Routes>
       <ChatBot isOpen={isChatOpen} toggleChat={toggleChat} />
     </Router>

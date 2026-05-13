@@ -1,92 +1,91 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import bookimage from '../assets/shadows wake.jpg'
+import { Link, useParams } from 'react-router-dom'
+import { books } from '../data/books'
 
 function Book() {
+  const { id } = useParams();
+  const book = books.find(b => b.id === id);
+
+  if (!book) {
+    return (
+      <div className="book-page" style={{ textAlign: 'center', paddingTop: '100px' }}>
+        <div className="page-header">
+          <Link to="/" className="back-btn">← Back to Portfolio</Link>
+          <h1>Book Not Found</h1>
+          <p>The book you are looking for does not exist.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="book-page">
       <div className="page-header">
-        <Link to="/" className="back-btn">← Back to Portfolio</Link>
-        <h1>In the Shadow's Wake</h1>
-        <p>A journey into the darker edges of <span style={{ backgroundColor: "#5b85d9", color: "white" }}>&nbsp;imagination&nbsp;</span></p>
+        <Link to="/#book" className="back-btn">← Back to Portfolio</Link>
+        <h1>{book.title}</h1>
+        <p><span style={{ backgroundColor: "#5b85d9", color: "white", padding: "0.25rem 0" }}>&nbsp;{book.genre}&nbsp;</span></p>
       </div>
 
       <div className="book-content">
         <div className="book-cover">
           <div className="cover-placeholder">
-            <img src={bookimage} alt="Book Cover" />
+            <img src={book.image} alt="Book Cover" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} />
           </div>
         </div>
 
         <div className="book-details">
           <div className="book-section">
             <h2>About the Book</h2>
-            <p>
-              <em>In the Shadow's Wake</em> is a collection of stories that explore the quiet chaos of human experience 
-              through fiction, reflection, and raw honesty. This book delves into the darker edges of imagination, 
-              examining themes of identity, loss, redemption, and the human condition.
-            </p>
-            <p>
-              Each story is crafted with careful attention to detail, drawing readers into worlds that are at once 
-              familiar and unsettling. The narratives challenge conventional perspectives and invite readers to 
-              question their own understanding of reality and morality.
-            </p>
+            <p>{book.overview}</p>
           </div>
 
           <div className="book-section">
             <h2>Key Themes</h2>
             <ul className="themes-list">
-              <li>Identity and self-discovery</li>
-              <li>The nature of reality and perception</li>
-              <li>Loss and the process of healing</li>
-              <li>Redemption and transformation</li>
-              <li>The human condition in modern society</li>
-              <li>Existential questions and philosophical exploration</li>
+              {book.coreThemes.map((theme, idx) => (
+                <li key={idx} style={{ padding: '0.25rem 0' }}>{theme}</li>
+              ))}
             </ul>
           </div>
 
           <div className="book-section">
-            <h2>Excerpt</h2>
-            <blockquote className="book-excerpt">
-              "In the quiet moments between chaos and order, we find ourselves. Not in the grand gestures or 
-              the loud declarations, but in the shadows that dance at the edges of our consciousness. 
-              It is there, in the wake of what we've left behind, that our true nature emerges."
-            </blockquote>
+            <h2>Narrative Identity</h2>
+            <p>{book.narrativeIdentity}</p>
           </div>
 
           <div className="book-section">
             <h2>Publication Details</h2>
             <div className="publication-info">
-              <p><strong>Genre:</strong> Literary Fiction / Dark Fantasy Thriller</p>
-              <p><strong>Pages:</strong> 288</p>
+              <p><strong>Genre:</strong> {book.genre}</p>
+              <p><strong>Type:</strong> {book.type}</p>
+              <p><strong>Publish Year:</strong> {book.publishYear}</p>
+              <p><strong>Status:</strong> {book.status}</p>
               <p><strong>Language:</strong> English</p>
-              <p><strong>Format:</strong> Paperback, E-book</p>
-              <p><strong>Publisher:</strong> Independent Publication</p>
             </div>
           </div>
 
-          <div className="book-section">
-            <h2>Reader Reviews</h2>
-            <div className="reviews">
-              <div className="review">
-                <p>"A haunting exploration of the human psyche that stays with you long after the last page."</p>
-                <span className="reviewer">- Literary Review</span>
-              </div>
-              <div className="review">
-                <p>"Thajudeen's writing is both beautiful and unsettling, creating a unique reading experience."</p>
-                <span className="reviewer">- Book Enthusiast</span>
+          {book.buyLinks && book.buyLinks.length > 0 && (
+            <div className="book-section">
+              <h2>Get Your Copy</h2>
+              <div className="purchase-options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                {book.buyLinks.map((link, idx) => (
+                  <a key={idx} href={link.url} className="purchase-btn" style={{ 
+                    padding: '0.5rem 1rem', 
+                    border: '0.125rem solid var(--black)', 
+                    background: 'var(--yellow)', 
+                    color: 'var(--black)', 
+                    fontWeight: 'bold', 
+                    textDecoration: 'none', 
+                    borderRadius: '0.375rem', 
+                    boxShadow: '4px 4px 0px var(--black)',
+                    transition: 'all 0.3s'
+                  }}>
+                    {link.platform}
+                  </a>
+                ))}
               </div>
             </div>
-          </div>
-
-          <div className="book-section">
-            <h2>Get Your Copy</h2>
-            <div className="purchase-options">
-              <a href="#" className="purchase-btn">Amazon Kindle</a>
-              <a href="#" className="purchase-btn">Paperback</a>
-              <a href="#" className="purchase-btn">Local Bookstores</a>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

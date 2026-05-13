@@ -27,7 +27,7 @@ Want to know more about me? <a href="#" onClick={toggleChat} style={{ color: 'va
 
       <div className='about-buttons'>
       <a href={cv} download className="download-resume-btn">Download Resume</a>
-  <a href="/book" className="read-book-btn">Read My Books</a>
+  <a href="#book" className="read-book-btn">Read My Books</a>
   </div>
     </section>
   )

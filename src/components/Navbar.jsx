@@ -59,7 +59,7 @@ function Navbar() {
         <a href="#skills" onClick={closeMenu} className='color-2'>Skills</a>
         <a href="#projects" onClick={closeMenu} className='color-3'>Projects</a>
         <a href="#experience" onClick={closeMenu} className='color-4'>Experience</a>
-        <a href="#book" onClick={closeMenu} className='color-5'>Book</a>
+        <a href="#book" onClick={closeMenu} className='color-5'>Books</a>
         <a href="#contact" onClick={closeMenu} className='color-6'>Contact</a>
         
       </div>
