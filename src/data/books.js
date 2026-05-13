@@ -1,6 +1,6 @@
 import shadowswake from '../assets/book_pics/shadows wake.jpg';
 import dheerarajan from '../assets/book_pics/Dheerarajan.jpg';
-import makalude from '../assets/book_pics/makalude.jpg';
+import makalude from '../assets/book_pics/Makalude.jpg';
 import eir from '../assets/book_pics/Eir.jpg';
 import timeless from '../assets/book_pics/timeless.jpg';
 import ancient from '../assets/book_pics/ancient.jpg';
