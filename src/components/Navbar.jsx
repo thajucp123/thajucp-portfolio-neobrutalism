@@ -1,86 +1,120 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react';
+import { Dribbble, Github, Instagram, Linkedin, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About Me', href: '/#about' },
+  { label: 'Services', href: '/#skills' },
+  { label: 'Projects', href: '/#projects' },
+];
+
+const socialItems = [
+  { label: 'GitHub', href: 'https://github.com/thajucp123', icon: Github },
+  { label: 'Instagram', href: 'https://www.instagram.com/chaaju__/', icon: Instagram },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thaju-fakrudheen/', icon: Linkedin },
+];
+
+const navVariants = {
+  hidden: { y: -24, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.05 },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: -10, opacity: 0 },
+  visible: { y: 0, opacity: 1 },
+};
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // for mobile navigation menu
-  const [theme, setTheme] = useState("light"); // for theme toggling
-
-  // for hamburger menu toggle
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
-  const [hidden, setHidden] = useState(false); // for hiding navbar on scroll
-  // Track the last scroll position
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        // scrolling down → hide
-        setHidden(true);
-      } else {
-        // scrolling up → show
-        setHidden(false);
-      }
-      setLastScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
-  // Theme toggling logic
-  useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, [theme]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className={`navbar ${hidden ? "hidden" : ""}`}>
-    <div className='navbar-name'>
-      <h1>Thajudeen CP</h1>
-      <p>AI/ML Engineer + Full Stack Developer</p>
-    </div>
-      <button 
-        className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-        onClick={toggleMenu}
-        aria-label="Toggle navigation menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-        <a href="#about" onClick={closeMenu} className='color-1'>About</a>
-        <a href="#skills" onClick={closeMenu} className='color-2'>Skills</a>
-        <a href="#projects" onClick={closeMenu} className='color-3'>Projects</a>
-        <a href="#experience" onClick={closeMenu} className='color-4'>Experience</a>
-        <a href="#book" onClick={closeMenu} className='color-5'>Books</a>
-        <a href="#contact" onClick={closeMenu} className='color-6'>Contact</a>
-        
+    <motion.nav
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
+      className="relative z-50 border-b border-[#c9c9c4] bg-[#fbfbfa]"
+    >
+      <div className="flex min-h-[96px] items-center justify-between gap-5 px-5 md:px-10 lg:px-[68px]">
+        <motion.a variants={itemVariants} href="/" className="text-[32px] font-semibold tracking-[-0.04em] text-[#151515] no-underline">
+          <b><big>THAJUDEEN CP</big></b><span className="text-[#8f8f8a]">.</span>
+        </motion.a>
+
+        <motion.div variants={itemVariants} className="hidden items-center gap-1 lg:flex">
+          {navItems.map((item) => (
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              key={item.label}
+              href={item.href}
+              className="pill-link rounded-full px-8 py-3 text-xs uppercase no-underline"
+            >
+              {item.label}
+            </motion.a>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="flex items-center gap-2">
+          <div className="hidden items-center gap-2 md:flex">
+            {socialItems.map(({ label, href, icon: Icon, mark }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target={href === '#' ? undefined : '_blank'}
+                rel={href === '#' ? undefined : 'noopener noreferrer'}
+                aria-label={label}
+                className="circle-button no-underline"
+                whileHover={{ y: -3, rotate: Icon === Dribbble ? -8 : 0 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {Icon ? <Icon size={17} strokeWidth={1.8} /> : <span className="text-xs font-bold">{mark}</span>}
+              </motion.a>
+            ))}
+          </div>
+
+          <motion.button
+            type="button"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            className="circle-button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.94 }}
+          >
+            {isMenuOpen ? <X size={19} /> : <Menu size={19} />}
+          </motion.button>
+        </motion.div>
       </div>
-      {/* place toggle dark/light mode button with moon and sun icons here */}
-      <div className="theme-toggle">
-  <button className="toggle-button" 
-    aria-label="Toggle dark/light mode"
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 64 64">
-<path d="M32 19c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13S24.82 19 32 19zM34 8c0 .366 0 5.634 0 6 0 1.105-.895 2-2 2s-2-.895-2-2c0-.366 0-5.634 0-6 0-1.105.895-2 2-2S34 6.895 34 8zM50.385 16.444c-.259.259-3.984 3.984-4.243 4.243-.781.781-2.047.781-2.828 0-.781-.781-.781-2.047 0-2.828.259-.259 3.984-3.984 4.243-4.243.781-.781 2.047-.781 2.828 0S51.166 15.663 50.385 16.444zM56 34c-.366 0-5.634 0-6 0-1.105 0-2-.895-2-2s.895-2 2-2c.366 0 5.634 0 6 0 1.105 0 2 .895 2 2S57.105 34 56 34zM47.556 50.385c-.259-.259-3.984-3.984-4.243-4.243-.781-.781-.781-2.047 0-2.828s2.047-.781 2.828 0c.259.259 3.984 3.984 4.243 4.243.781.781.781 2.047 0 2.828S48.337 51.166 47.556 50.385zM30 56c0-.366 0-5.634 0-6 0-1.105.895-2 2-2s2 .895 2 2c0 .366 0 5.634 0 6 0 1.105-.895 2-2 2S30 57.105 30 56zM13.615 47.556c.259-.259 3.984-3.984 4.243-4.243.781-.781 2.047-.781 2.828 0 .781.781.781 2.047 0 2.828-.259.259-3.984 3.984-4.243 4.243-.781.781-2.047.781-2.828 0S12.834 48.337 13.615 47.556zM8 30c.366 0 5.634 0 6 0 1.105 0 2 .895 2 2s-.895 2-2 2c-.366 0-5.634 0-6 0-1.105 0-2-.895-2-2S6.895 30 8 30zM16.444 13.615c.259.259 3.984 3.984 4.243 4.243.781.781.781 2.047 0 2.828-.781.781-2.047.781-2.828 0-.259-.259-3.984-3.984-4.243-4.243-.781-.781-.781-2.047 0-2.828S15.663 12.834 16.444 13.615z"></path>
-</svg>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-      <path d="M20 15c0 5-4 9-9 9 3-2 5-5 5-9s-2-7-5-9c5 0 9 4 9 9z"
-            stroke="currentColor" strokeWidth="2"/>
-    </svg>
-  </button>
-</div>
 
-
-    </div>
-  )
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-[#c9c9c4] bg-[#fbfbfa] lg:hidden"
+          >
+            <div className="grid gap-2 p-5">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="pill-link rounded-full px-5 py-3 text-center text-xs uppercase no-underline"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

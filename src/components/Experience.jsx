@@ -1,43 +1,45 @@
-import React from 'react'
+import React from 'react';
+import { BriefcaseBusiness } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 function Experience() {
   return (
-    <section id="experience" className="experience">
-    <svg
-    className="pin-dot"
-    width="12"
-    height="12"
-    viewBox="0 0 12 12"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="6" cy="6" r="6" fill="#000" />
-  </svg>
-      <h2>Experience 💼</h2>
-      <div className="job">
-  <h3>Technical Operations Associate – AES India</h3>
-  <b>(Inspection Coordination & Systems Support)</b>
+    <section id="experience" className="portfolio-section">
+      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-90px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="section-kicker">Experience</span>
+          <h2 className="section-heading mt-4">Current Role</h2>
+        </motion.div>
 
-  <p><strong>Aug 2021 – Present</strong></p>
-
-  <p>
-    Working across AI/ML development, software systems, and technical operations within AES India, building practical automation tools and computer vision-assisted inspection solutions for industrial workflows.
-  </p>
-
-  <ul>
-    <li>Developing AI/ML and computer vision-based inspection assistance systems using Python, OpenCV, YOLOv8, and modern ML frameworks.</li>
-
-<li>Building internal tools, workflow automation systems, and full stack applications using React, Next.js, Node.js, and REST APIs.</li>
-
-<li>Managing inspection coordination, technical systems support, documentation workflows, and operational processes across multiple business divisions.</li>
-
-<li>Supporting deployment workflows, cloud infrastructure, and technical integrations for internal and client-facing systems.</li>
-
-  </ul>
-
-</div>
-
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-90px' }}
+          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+          className="paper-card p-6 md:p-9"
+        >
+          <div className="mb-8 flex items-start justify-between gap-4">
+            <span className="circle-button">
+              <BriefcaseBusiness size={18} />
+            </span>
+            <span className="rounded-full border border-[#a9a9a4] px-4 py-2 text-xs uppercase">Aug 2021 - Present</span>
+          </div>
+          <h3 className="text-[clamp(2rem,5vw,4.5rem)] uppercase leading-[0.9] tracking-[-0.055em]">
+            Technical Operations Associate
+          </h3>
+          <p className="mt-3 text-lg uppercase text-[#686863]">AES India</p>
+          <p className="mt-8 max-w-3xl text-[17px] leading-relaxed text-[#30302d]">
+            Working across AI/ML development, technical operations, inspection coordination, systems support, and internal tooling. I build computer vision inspection assistants, full stack workflow tools, automation systems, and deployment-ready integrations for industrial teams.
+          </p>
+        </motion.div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default Experience
+export default Experience;

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 const ChatBot = ({ isOpen, toggleChat }) => {
     const [messages, setMessages] = useState([
@@ -86,11 +87,11 @@ checkServerStatus();
     return (
         <div className={`chatbot-fab ${isOpen ? 'open' : ''}`}>
             {!isOpen && (
-                <div className="fab-container" onClick={toggleChat}>
+                <div className="fab-container" onClick={toggleChat} style={{ height: '7rem', width: '7rem', textAlign: 'center', cursor: 'pointer' }}>
                     <div className="fab-icon">
                         <svg className="w-8 h-8 text-black mr-0 group-hover:mr-2 transition-all duration-300" fill="none" stroke="#000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6a2 2 0 100-4 2 2 0 000 4zm0 14a2 2 0 100-4 2 2 0 000 4zm6-8a2 2 0 100-4 2 2 0 000 4zm-12 0a2 2 0 100-4 2 2 0 000 4z"></path></svg>
                     </div>
-                    <span className="fab-text">Chat with KnowThaj</span>
+                    <span className="fab-text" style={{fontSize: '1rem'}}>Chat with<br/> me</span>
                 </div>
             )}
 
@@ -163,7 +164,7 @@ checkServerStatus();
                                 autoComplete="off"
                             />
                             <button type="submit">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                <ArrowRight className="w-6 h-6" />
                             </button>
                         </form>
                     </div>

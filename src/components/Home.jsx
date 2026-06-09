@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
+import Hero from './Hero'
 import About from './About'
 import Skills from './Skills'
 import Projects from './Projects'
@@ -11,10 +12,10 @@ import PreviousSite from './PreviousSite'
 
 function Home({ toggleChat }) {
   return (
-    <>
-    <Navbar />
-    <div className="home-container ">
-
+    <div className="portfolio-shell">
+      <Navbar />
+      <main>
+      <Hero />
       <About toggleChat={toggleChat} />
       <PreviousSite />
       <Skills />
@@ -22,9 +23,9 @@ function Home({ toggleChat }) {
       <Experience />
       <Book />
       <Contact />
+      </main>
       <Footer />
     </div>
-    </>
   )
 }
 

@@ -1,95 +1,106 @@
-import React from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { books } from '../data/books'
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { books } from '../data/books';
 
 function Book() {
   const { id } = useParams();
-  const book = books.find(b => b.id === id);
+  const book = books.find((item) => item.id === id);
 
   if (!book) {
     return (
-      <div className="book-page" style={{ textAlign: 'center', paddingTop: '100px' }}>
-        <div className="page-header">
-          <Link to="/" className="back-btn">← Back to Portfolio</Link>
-          <h1>Book Not Found</h1>
-          <p>The book you are looking for does not exist.</p>
-        </div>
+      <div className="portfolio-shell">
+        <section className="portfolio-section text-center">
+          <Link to="/" className="editorial-button mx-auto mb-8 w-fit">
+            <ArrowLeft size={15} />
+            Back to Portfolio
+          </Link>
+          <span className="section-kicker block">Missing Book</span>
+          <h1 className="section-heading mt-4">Not Found</h1>
+        </section>
       </div>
     );
   }
 
   return (
-    <div className="book-page">
-      <div className="page-header">
-        <Link to="/#book" className="back-btn">← Back to Portfolio</Link>
-        <h1>{book.title}</h1>
-        <p><span style={{ backgroundColor: "#5b85d9", color: "white", padding: "0.25rem 0" }}>&nbsp;{book.genre}&nbsp;</span></p>
-      </div>
+    <div className="portfolio-shell">
+      <section className="portfolio-section">
+        <Link to="/#book" className="editorial-button mb-8 w-fit">
+          <ArrowLeft size={15} />
+          Back to Books
+        </Link>
 
-      <div className="book-content">
-        <div className="book-cover">
-          <div className="cover-placeholder">
-            <img src={book.image} alt="Book Cover" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} />
-          </div>
+        <div className="grid gap-9 lg:grid-cols-[0.75fr_1.25fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img src={book.image} alt={book.title} className="w-full border border-[#c9c9c4] object-cover grayscale" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.75, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="section-kicker">{book.genre}</span>
+            <h1 className="section-heading mt-4">{book.title}</h1>
+            <div className="mt-7 flex flex-wrap gap-2">
+              {[book.type, book.publishYear, book.status].map((detail) => (
+                <span key={detail} className="rounded-full border border-[#a9a9a4] px-4 py-2 text-xs uppercase">
+                  {detail}
+                </span>
+              ))}
+            </div>
+            <p className="mt-8 text-[17px] leading-relaxed text-[#30302d]">{book.overview}</p>
+          </motion.div>
         </div>
+      </section>
 
-        <div className="book-details">
-          <div className="book-section">
-            <h2>About the Book</h2>
-            <p>{book.overview}</p>
-          </div>
-
-          <div className="book-section">
-            <h2>Key Themes</h2>
-            <ul className="themes-list">
-              {book.coreThemes.map((theme, idx) => (
-                <li key={idx} style={{ padding: '0.25rem 0' }}>{theme}</li>
+      <section className="portfolio-section">
+        <div className="grid gap-4 md:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-90px' }}
+            className="paper-card p-6 md:p-8"
+          >
+            <span className="section-kicker">Key Themes</span>
+            <ul className="mt-6 space-y-4">
+              {book.coreThemes.map((theme) => (
+                <li key={theme} className="border-b border-[#c9c9c4] pb-4 text-sm uppercase text-[#30302d] last:border-b-0">
+                  {theme}
+                </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="book-section">
-            <h2>Narrative Identity</h2>
-            <p>{book.narrativeIdentity}</p>
-          </div>
-
-          <div className="book-section">
-            <h2>Publication Details</h2>
-            <div className="publication-info">
-              <p><strong>Genre:</strong> {book.genre}</p>
-              <p><strong>Type:</strong> {book.type}</p>
-              <p><strong>Publish Year:</strong> {book.publishYear}</p>
-              <p><strong>Status:</strong> {book.status}</p>
-              <p><strong>Language:</strong> English</p>
-            </div>
-          </div>
-
-          {book.buyLinks && book.buyLinks.length > 0 && (
-            <div className="book-section">
-              <h2>Get Your Copy</h2>
-              <div className="purchase-options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                {book.buyLinks.map((link, idx) => (
-                  <a key={idx} href={link.url} className="purchase-btn" style={{ 
-                    padding: '0.5rem 1rem', 
-                    border: '0.125rem solid var(--black)', 
-                    background: 'var(--yellow)', 
-                    color: 'var(--black)', 
-                    fontWeight: 'bold', 
-                    textDecoration: 'none', 
-                    borderRadius: '0.375rem', 
-                    boxShadow: '4px 4px 0px var(--black)',
-                    transition: 'all 0.3s'
-                  }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-90px' }}
+            transition={{ delay: 0.08 }}
+            className="paper-card p-6 md:p-8"
+          >
+            <span className="section-kicker">Narrative Identity</span>
+            <p className="mt-6 text-[17px] leading-relaxed text-[#30302d]">{book.narrativeIdentity}</p>
+            {book.buyLinks && book.buyLinks.length > 0 && (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {book.buyLinks.map((link) => (
+                  <motion.a key={link.platform} href={link.url} className="editorial-button" whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
                     {link.platform}
-                  </a>
+                    <ExternalLink size={15} />
+                  </motion.a>
                 ))}
               </div>
-            </div>
-          )}
+            )}
+          </motion.div>
         </div>
-      </div>
+      </section>
     </div>
-  )
+  );
 }
 
-export default Book
+export default Book;
